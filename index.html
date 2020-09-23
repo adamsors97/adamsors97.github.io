@@ -8,6 +8,7 @@ $(document).ready(function(){
 setMenuCircles();
 setDimensions();
 });
+var activeMi;
 var switching = false;
 function setMenuCircles(){
 	// Hover Korok
@@ -25,7 +26,7 @@ function setMenuCircles(){
 			mhCircle.css({top: pos.top + menuitem.height() / 2 + "px", left: pos.left + mCwidth /2 +  "px",position: 'absolute',
 			'max-height': menuitem.height() * 1.5 ,width: mCwidth, height: mCwidth
 			,'background-color': menuitem.css('--bcolor')});
-			mhCircle.css({'margin-top': -mhCircle.height()/2, 'margin-left': -mCwidth/2 -mCwidth/10});
+			mhCircle.css({'margin-top': -mhCircle.height()/2, 'margin-left': -mCwidth/2 -mCwidth/8});
 			console.log(`height, ${reduct}`);
 			reddots.eq(i).css({top: pos.top+ "px", left: pos.left + "px",position: 'absolute'});
 			}
@@ -42,13 +43,21 @@ function setMenuCircles(){
 	kor.css({top: firstMi.offset().top + firstMi.height()/2+"px", left: firstMi.offset().left + firstMi.width()/2+ "px",
 	width: korwidth,height:korheight});
 	kor.css({'margin-top': -kor.height()/2, 'margin-left':-kor.width()/2});
+	//Aktív menu elem inicializálás
+	activeMi = firstMi;
+	activeMi.css({'-webkit-text-stroke-color': 'white', '-webkit-text-fill-color': 'white','opacity':1});
 }
 function setDimensions(){
 	var scrWidth = $(window).width();
 	var scrHeight = $(window).height();
 	
 }
-
+function switchActMi(element){
+		activeMi.css('-webkit-text-stroke-color',"#a6a297");
+		activeMi.css('-webkit-text-fill-color', 'grey');
+		activeMi = element;
+		activeMi.css({'-webkit-text-stroke-color': 'white', '-webkit-text-fill-color': 'white','opacity':1});
+}
 function switchPage(elementId){
 	if(!switching){
 		var element = $("#"+elementId);
@@ -56,12 +65,12 @@ function switchPage(elementId){
 		var reddot = $(".dot").last();
 		var kor = $("#kor");
 		console.log(element);
-
+		switchActMi(element);
 		kor.css({'transition':'all 0.5s, top 0s,left 0s,width 0s, height 0s,background-color 0s'});
 		kor.css({top: pos.top + element.height()/2+"px", left: pos.left + element.width()/2+ "px","z-index" : 1,
 			 'background-color': getComputedStyle(document.getElementById(elementId),null).getPropertyValue('--bcolor'),
-			 'transform':'scale(2.5)'});
-		kor.css({'margin-top': -kor.height()/2, 'margin-left':-kor.width()/2});
+			 'transform':'scale(3)'});
+		kor.css({'margin-top': -kor.height()/2, 'margin-left': -kor.width()/2 });
 		reddot.css({top: pos.top + 'px', left: pos.left + 'px'});
 		$("#csere").css({"z-index" : 1});
 		$("#content").css({'opacity':0});
@@ -98,6 +107,8 @@ function onResize(){
 	$(".sideimg").css({'visibility': 'visible'});
 	}
 }
+//<img src = "side.png" id = "side-right" class = "sideimg">
+//<img src = "side.png" id = "side-left" class = "sideimg">
 </script>
 
 <style>
@@ -107,13 +118,13 @@ html, body {
 }
 body{
 	overflow:hidden;
-
+	background-color: #b3b2af;
 }
 #navbar{
   display: flex;
   height: 200px;
 	align-items: flex-start ;
-	justify-content: center;
+	justify-content: flex-start;
     position:relative;
 	z-index:5;
 	transition: opacity 3s ease;
@@ -126,16 +137,17 @@ body{
 }
 #navbar span{
 	margin: 10px;
+	margin-left : 20px;
 	border-style: solid;
 	border-color: transparent;
-	font:100px sans-serif;
+	font:75px sans-serif;
 	max-width:500px;
 	color: black;
-	opacity:0.25;
+	opacity:0.8;
 	z-index:1;
 		-webkit-text-fill-color: grey; /* Will override color (regardless of order) */
 		-webkit-text-stroke-width: 2px;
-		-webkit-text-stroke-color: "#fcfcfc";
+		-webkit-text-stroke-color: "#a6a297";
 		-webkit-transition: -webkit-text-stroke-color 1s ease-in-out;
 		-moz-transition: fill 1s ease;
 		-o-transition: fill 1s ease;
@@ -153,7 +165,6 @@ body{
   transform-origin: center center;
   transition: all 0.3s ease-in-out;
   z-index:-1;
-  border: 0.5px solid black;
 }
 .menu.blue{
 --bcolor : blue;
@@ -168,7 +179,7 @@ body{
 #navbar span:hover{
 -webkit-text-stroke-color:white;
 -webkit-text-fill-color: white;
-	opacity:0.8;
+	opacity:1;
 }
 #navbar span:hover + .mhCircle{
 
@@ -176,7 +187,7 @@ body{
   
 }
 #navbar span:active + .mhCircle{
-  transform: scale(2);
+  transform: scale(1.1);
 }
 #csere{
 	height: 100vh;
@@ -196,13 +207,13 @@ body{
 	position:absolute;
 	background-color: #34eb3d;
 	border-radius: 50%; 
-	transition: all 0.8s, top 0s,left 0s,width 0s, height 0s,background-color 0s;
+	transition: all 1s, top 0s,left 0s,width 0s, height 0s,background-color 0s;
 	transform: scale(0);
 }
 .dot {
   height: 5px;
   width: 5px;
-  background-color: black;
+  background-color: transparent;
   border-radius: 50%;
   display: inline-block;
   position:absolute;
@@ -239,20 +250,19 @@ transform: scaleX(-1);
 
 <div id="navbar">
 
-<span onclick = "switchPage(this.id)" id = "gomb" class = "menu red">Test</span>
+<span onclick = "switchPage(this.id)" id = "gomb" class = "menu red">Magamról</span>
 	<div class="mhCircle"></div>
 
-<span onclick = "switchPage(this.id)" id = "info" class = "menu green">Info</span>
+<span onclick = "switchPage(this.id)" id = "info" class = "menu green">Infók</span>
 	<div class="mhCircle"></div>
 
-<span onclick = "switchPage(this.id)" id = "third" class = "menu blue">Third</span>
+<span onclick = "switchPage(this.id)" id = "third" class = "menu blue">Referenciák</span>
 	<div class="mhCircle"></div>
 
 <div id = "dot" class="dot"></div>
 <div id = "dot" class="dot"></div>
 </div>
-<img src = "side.png" id = "side-right" class = "sideimg">
-<img src = "side.png" id = "side-left" class = "sideimg">
+
 <div id = "content">
 <p>
 Effect if in up no depend seemed.
