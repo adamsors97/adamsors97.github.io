@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+
+<script>
+/* Set the width of the side navigation to 250px */
+var menu = 0;
+var loginmenu=0;
+function openNav() {
+	var sidenav = document.getElementById("mySidenav");
+	if(menu == 1) closeNav()
+	else{
+	sidenav.style.width = "250px";
+	sidenav.addEventListener("keyup",closeMenu);
+	menu = 1;
+	}
+}
+function openLogin(){
+	var loginbar = document.getElementById("myLoginbar");
+	var width = loginbar.offsetWidth;
+	var pswinput = document.getElementById("psw");
+	switch(width){
+	case 0: loginbar.style.width = "250px";
+	pswinput.addEventListener("keyup",enterLogin);
+	loginmenu = 1;
+	break;
+	case 250: loginbar.style.width = "0px";
+	pswinput.removeEventListener("keyup",enterLogin);
+	loginmenu = 0;
+	break;
+	default: loginbar.style.width = "0px";
+	}
+}
+function enterLogin(event){
+	if(event.keyCode == 13){
+	event.preventDefault();
+	document.getElementById("loginbutton").click();
+	}
+}
+function closeMenu(event){
+	if(event.keyCode == 27){
+	event.preventDefault();
+	if(menu == loginmenu){ openLogin();}
+		else { closeNav();}
+	}
+}
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+	var sidenav = document.getElementById("mySidenav");
+	sidenav.style.width = "0";
+	sidenav.removeEventListener("keyup",closeMenu);
+	document.getElementById("myLoginbar").style.width = "0px";
+	menu = 0;
+}
+
+function login(){
+console.log("button press");
+}
+function loadingDone(){
+	//document.getElementById("loading").webkitAnimationPlayState = "running";
+	//setTimeout(function(){ document.getElementById("loading").style.display = 'none'; }, 5000);
+	
+}
+function switchPage(){
+	
+}
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+
+</head>
+<body onload = "loadingDone()">
+
+
+
+<div id="bg"> </div>
+<div id="mySidenav" class="side-nav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" class="side-link">About</a>
+  <a href="#" class="side-link">Services</a>
+  <a href="#" class="side-link">Clients</a>
+  <a href="#" class="side-link">Contact</a>
+  <a href="javascript:void(0)" class="side-link" id = "navlogin" onclick="openLogin()">Belépés</a>
+
+  <div id="myLoginbar" class="sidelogin">
+  <t1>Felhasználó</t1>
+  <input>
+    <t1>Jelszó</t1>
+  <input id = "psw" type="password">
+  <button onclick="login()" id = "loginbutton" class="button">Bejelentkezes</button>
+  </div>
+    <a href="index.html">Next</a>
+</div>
+<button onclick="openNav()" class="sidebutton"></button>
+
+<div id= "topnavbar">
+	<ul>
+	<svg viewbox="0 0 5 1">
+
+		<text x="0.4" y="0.2" onclick="openNav()" text-anchor="middle" class = "stroke menu" stroke-width=".01" >menu</text>
+		<text x="1.2" y="0.4" onclick="openNav()" text-anchor="middle" class = "stroke" stroke-width=".01" stroke="#fcfcfc">menu</text>
+		<text x="2" y="0.3" onclick="openNav()" text-anchor="middle" class = "stroke" stroke-width=".01" stroke="#fcfcfc">menu</text>
+		<text x="2.8" y="0.4" onclick="openNav()" text-anchor="middle" class = "stroke" stroke-width=".01" stroke="#fcfcfc">menu</text>
+		<text x="3.6" y="0.2" onclick= "openNav()" text-anchor="middle" class = "stroke" stroke-width=".01" stroke="#fcfcfc">menu</text>
+	</svg>
+	</ul>
+</div>
+<div id="main">
+
+</div>
+</body>
+</html>

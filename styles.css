@@ -1,0 +1,215 @@
+body{
+background-color: lightpink;
+}
+div{
+	font-size: 20px;
+}
+/* Style the sidebar - fixed full height */
+.probe{
+	margin-top:20px;
+}
+.side-nav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-image: linear-gradient(to right, #8c44a6, #35004a); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidelogin{
+  display: block;
+  height: 30%;
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Stay on top */
+  top: 45%; /* Stay at the top */
+  right: 0;
+  background-image: linear-gradient(to right, #372140, black); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 25px; /* Place content 60px from the top */
+  padding-left: 0px;
+  transition: 0.3s; /* 0.3 second transition effect to slide in the sidenav */
+
+}
+
+.sidelogin t1{
+
+	font-family: serif;
+	color: white;
+	font-size:20px;
+} 
+
+.sidelogin input{
+	font-size:15px;
+	padding: 5px 5px 5px 5px;
+	
+
+}
+.sidelogin > *{
+	margin: 5px 0px 10px 25px;
+
+}
+
+/* The navigation menu links */
+.side-nav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+.side-nav div:nth-child(even){
+	padding-bottom: 40px;
+}
+#navlogin{
+	padding-bottom:12px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.side-nav a:hover {
+  color: #f1f1f1;
+}
+.button{
+	border: none;
+	background-color: #997aff;
+	padding: 12px 56px;
+	font-size: 14px;
+	transition: 0.3s;
+}
+.sidebutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  right:0;
+  top:0;
+  position:fixed;
+  height:100%;
+  width:20;
+  z-index: 0;
+  transition: 0.3s;
+
+}
+
+.sidebutton:hover{
+  background-color:#42f56f;
+}
+/* Position and style the close button (top right corner) */
+.side-nav .closebtn {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  font-size: 36px;
+  margin-left: 0px;
+}
+.stroke{
+	font: 0.3px sans-serif;
+	stroke: blue;
+	stroke-width: 0.01;
+	-webkit-transition: fill 1s ease;
+	-moz-transition: fill 1s ease;
+	-o-transition: fill 1s ease;
+	transition: fill 1s ease;
+	fill:grey;
+	opacity:0.25;
+	-webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.stroke:hover{
+	fill:white;
+	stroke: white;
+	opacity:0.9
+}
+
+
+ path { transition: fill 1s ease; }
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-right .5s;
+  padding: 20px;
+  z-index:0;
+  color: white;
+
+}
+#switch{
+	height:100%;
+	width:100%;
+	z-index:0;
+	top:0;
+	left:0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:transparent;
+	position: absolute;
+	overflow: hidden;
+}
+#topnavbar{
+	height: 10%;
+	z-index:1;
+
+}
+
+#loading{
+	width:100%;
+	height:100%;
+	z-index:1;
+	background-color:green;
+	position: absolute;
+	top:0;
+	left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+       -webkit-animation: fadeoutLoading 4s ; /* Chrome, Safari, Opera */
+    animation: fadeoutLoading 4s ;
+   animation-play-state: paused;
+
+
+}
+
+#bg{
+  width:100%;
+  height:100%;
+  background: url(sky.jpg);
+  background-repeat: repeat-x;
+  background-size: auto;
+
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index:-1;
+ /* animation: MOVE-BG 1000s linear infinite;
+  animation-play-state: running; */
+}
+
+#bg:hover{
+	animation-play-state: paused; 
+}
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes fadeoutLoading {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  /* Standard syntax */
+  @keyframes fadeoutLoading {
+    from {opacity: 1;}
+	 to {opacity: 0;}
+  }
+@keyframes MOVE-BG {
+  from {
+		background-position: -50% 0;
+	}
+  to {
+    background-position: 100% 0;
+  }
+}
