@@ -1,304 +1,289 @@
 <!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Sors Ádám</a>
+                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfólió</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Rólam</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">Profil</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Szoftverfejlesztő</p>
+            </div>
+        </header>
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfólió</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                    <!-- Portfolio Item 1-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
 
-<script>
-$(document).ready(function(){
-setMenuCircles();
-setDimensions();
-});
-var activeMi;
-var switching = false;
-function setMenuCircles(){
-	// Hover Korok
-	var menuitems = $(".menu");
-	var mhCircles = $(".mhCircle");
-	var reddots = $(".dot");
-	if(menuitems.length == mhCircles.length){
-		menuitems.each(function(i){
-			var menuitem = menuitems.eq(i);
-			var mhCircle = mhCircles.eq(i);
-			var pos = menuitem.offset();
-			var reduct = 0.85;
-			var mCwidth = Math.sqrt(2) * menuitem.width() * reduct;
-			//console.log(menuitems.length + " Works " + menuitems.eq(i).position().top + " " + menuitems.eq(i).position().left);
-			mhCircle.css({top: pos.top + menuitem.height() / 2 + "px", left: pos.left + mCwidth /2 +  "px",position: 'absolute',
-			'max-height': menuitem.height() * 1.5 ,width: mCwidth, height: mCwidth
-			,'background-color': menuitem.css('--bcolor')});
-			mhCircle.css({'margin-top': -mhCircle.height()/2, 'margin-left': -mCwidth/2 -mCwidth/8});
-			console.log(`height, ${reduct}`);
-			reddots.eq(i).css({top: pos.top+ "px", left: pos.left + "px",position: 'absolute'});
-			}
-		)
-		}else{
-	console.log("No");
-	}
-	//Oldalvalto kor
-	var korwidth = $(document).width();
-	var korheight = $(document).height();
-	var firstMi = menuitems.first();
-	var kor = $("#kor");
-	console.log(korwidth);
-	kor.css({top: firstMi.offset().top + firstMi.height()/2+"px", left: firstMi.offset().left + firstMi.width()/2+ "px",
-	width: korwidth,height:korheight});
-	kor.css({'margin-top': -kor.height()/2, 'margin-left':-kor.width()/2});
-	//Aktív menu elem inicializálás
-	activeMi = firstMi;
-	activeMi.css({'-webkit-text-stroke-color': 'white', '-webkit-text-fill-color': 'white','opacity':1});
-}
-function setDimensions(){
-	var scrWidth = $(window).width();
-	var scrHeight = $(window).height();
-	
-}
-function switchActMi(element){
-		activeMi.css('-webkit-text-stroke-color',"#a6a297");
-		activeMi.css('-webkit-text-fill-color', 'grey');
-		activeMi = element;
-		activeMi.css({'-webkit-text-stroke-color': 'white', '-webkit-text-fill-color': 'white','opacity':1});
-}
-function switchPage(elementId){
-	if(!switching){
-		var element = $("#"+elementId);
-		var pos = element.offset();
-		var reddot = $(".dot").last();
-		var kor = $("#kor");
-		console.log(element);
-		switchActMi(element);
-		kor.css({'transition':'all 0.5s, top 0s,left 0s,width 0s, height 0s,background-color 0s'});
-		kor.css({top: pos.top + element.height()/2+"px", left: pos.left + element.width()/2+ "px","z-index" : 1,
-			 'background-color': getComputedStyle(document.getElementById(elementId),null).getPropertyValue('--bcolor'),
-			 'transform':'scale(3)'});
-		kor.css({'margin-top': -kor.height()/2, 'margin-left': -kor.width()/2 });
-		reddot.css({top: pos.top + 'px', left: pos.left + 'px'});
-		$("#csere").css({"z-index" : 1});
-		$("#content").css({'opacity':0});
-		$(".sideimg").css({'z-index':5});
-		switching = true;
-		setTimeout(appear, 1000); //3000
-		}else {
-		console.log("Still switching animation");
-		}
-}
-function appear(){
-	$("body").css({'background-color': $("#kor").css('background-color')});
-	$("#csere").css({'z-index':'-5'});
-	$("#kor").css({'transition': 'all 0s'});
-	$("#kor").css({'background-color': 'transparent','transform':'scale(0)'});
-	$("#navbar").children().css({'opacity':1});
-	$("#content").css({'opacity':1});
-	$(".sideimg").css({'z-index':-1})
-	switching = false;
-}
-function show(){
-	document.getElementById("gomb").innerHTML = "WHAAT";
-}
-window.addEventListener('load', function() {
-    console.log('All assets are loaded');
-	//setMenHovCircles();
-})
+							</div>
+							<p class = "pown"> Programtervezői informatikus BSC</p>
+                            <img class="img-fluid-grey small" src="assets/img/portfolio/sztelogo.png" alt="" />
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+							<p class = "pown"> Programtervezői informatikus MSC</p>
+                            <img class="img-fluid small" src="assets/img/portfolio/sztelogo.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row">
+                    <div class="col-lg-4 ml-auto"><p class="lead">Kiskoromban ismerkedtem meg a programozással, különböző script nyelvek használatával. Továbbra is érdeklődtem programok fejlesztésében, ezért 2016-ban jelentkeztem az SZTE programtervezői informatikus szakára, hogy kiteljesítsem tudásomat. </p></div>
+                    <div class="col-lg-4 mr-auto"><p class="lead">A képzésen tudást szereztem elsősorban a következőkben: <br> <b><span style="color: #1cfff8">Java, C++, HTML, CSS, PHP, Github</span></b> verziókezelőben, és<br>szakmai gyakornokságom alatt alkalmam nyílt <br> <b><span style="color: #1cfff8">C# , MSSQL és a Microsoft Team Foundation<br></b> verziókezelőjével megismerkedni.</p></div>
+                </div>
+				<div class="divider-custom divider-light"><div class="divider-custom-line"></div></div>
+                
+            </div>
+        </section>
+        <!-- Contact Section-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Contact Section Form-->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Name</label>
+                                    <input class="form-control" id="name" type="text" placeholder="Név" required="required" data-validation-required-message="Please enter your name." />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Email Address</label>
+                                    <input class="form-control" id="email" type="email" placeholder="Email cím" required="required" data-validation-required-message="Please enter your email address." />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Phone Number</label>
+                                    <input class="form-control" id="phone" type="tel" placeholder="Mobil" required="required" data-validation-required-message="Please enter your phone number." />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Message</label>
+                                    <textarea class="form-control" id="message" rows="5" placeholder="Üzenet" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <br />
+                            <div id="success"></div>
+                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Küldés</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            Szeged
+                            <br />
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Around the Web</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/adam.sors"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <!--<a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a> -->
+                        <a class="btn btn-outline-light btn-social mx-1" href="www.linkedin.com/in/adamsors97"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <!--<a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>-->
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
 
-function onResize(){
-	setMenuCircles();
-	if($(document).width()<1120){
-	$(".sideimg").css({'visibility':' hidden'});
-	}else {
-	$(".sideimg").css({'visibility': 'visible'});
-	}
-}
-//<img src = "side.png" id = "side-right" class = "sideimg">
-//<img src = "side.png" id = "side-left" class = "sideimg">
-</script>
-
-<style>
-html, body {
-  height: 100%;
-
-}
-body{
-	overflow:hidden;
-	background-color: #b3b2af;
-}
-#navbar{
-  display: flex;
-  height: 200px;
-	align-items: flex-start ;
-	justify-content: flex-start;
-    position:relative;
-	z-index:5;
-	transition: opacity 3s ease;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-}
-#navbar > * {
-}
-#navbar span{
-	margin: 10px;
-	margin-left : 20px;
-	border-style: solid;
-	border-color: transparent;
-	font:75px sans-serif;
-	max-width:500px;
-	color: black;
-	opacity:0.8;
-	z-index:1;
-		-webkit-text-fill-color: grey; /* Will override color (regardless of order) */
-		-webkit-text-stroke-width: 2px;
-		-webkit-text-stroke-color: "#a6a297";
-		-webkit-transition: -webkit-text-stroke-color 1s ease-in-out;
-		-moz-transition: fill 1s ease;
-		-o-transition: fill 1s ease;
-		transition: -webkit-text-stroke-color 0.35s ease,
-		-webkit-text-fill-color 0.2s ease, opacity 0.75s ease;
-}
-.mhCircle {
-  width: 200px;
-  height: 200px;
-
-  background-color: #bbb;
-  position:absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  transform-origin: center center;
-  transition: all 0.3s ease-in-out;
-  z-index:-1;
-}
-.menu.blue{
---bcolor : blue;
-}
-.menu.red{
---bcolor : red;
-}
-.menu.green{
---bcolor: green;
-}
-
-#navbar span:hover{
--webkit-text-stroke-color:white;
--webkit-text-fill-color: white;
-	opacity:1;
-}
-#navbar span:hover + .mhCircle{
-
-  transform: scale(1);
-  
-}
-#navbar span:active + .mhCircle{
-  transform: scale(1.1);
-}
-#csere{
-	height: 100vh;
-	width:100vh;
-	z-index:50;
-	top:0;
-	left:0;
-	background-color:black;
-	position: relative;
-	overflow:hidden;
-}
-#kor{
-	width: 11px;
-	height: 11px;
-	left:1px;
-	top:1px;
-	position:absolute;
-	background-color: #34eb3d;
-	border-radius: 50%; 
-	transition: all 1s, top 0s,left 0s,width 0s, height 0s,background-color 0s;
-	transform: scale(0);
-}
-.dot {
-  height: 5px;
-  width: 5px;
-  background-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  position:absolute;
-}
-#content{
-	margin: 0 20% 0 20%;
-	font: 21px georgia;
-	transition: all 0.3s ease-in-out;
-	opacity:0;
-	z-index:0;
-}
-.sideimg{
-position: absolute;
-z-index:-1;
-user-select: none;
-width: 20%;
-height : 100%;
-}
-#side-right{
-top: 0px;
-left: 0 px;
-
-}
-#side-left{
-right:0px;
-top:0px;
-transform: scaleX(-1);
-}
-#pusz{
-	font: 50px georgia;
-	color: aqua;
-}
-</style>
-</head>
-
-<body onresize = "onResize()">
-<div id="kor"></div>
-
-<div id="navbar">
-
-<span onclick = "switchPage(this.id)" id = "gomb" class = "menu red">Red</span>
-	<div class="mhCircle"></div>
-
-<span onclick = "switchPage(this.id)" id = "info" class = "menu green">Green</span>
-	<div class="mhCircle"></div>
-
-<span onclick = "switchPage(this.id)" id = "third" class = "menu blue">Blue</span>
-	<div class="mhCircle"></div>
-<span onclick = "window.location.href='net.html';" id = "next" class = "menu">Next</span>
-	<div class="mhCircle"></div>
-
-<div id = "dot" class="dot"></div>
-<div id = "dot" class="dot"></div>
-</div>
-
-<div id = "content">
-<p>
-
-Effect if in up no depend seemed.
-Ecstatic elegance gay but disposed.
-We me rent been part what.
-An concluded sportsman offending so provision mr education.
-Bed uncommonly his discovered for estimating far.
-Equally he minutes my hastily. Up hung mr we give rest half.
-Painful so he an comfort is manners. 
-Effect if in up no depend seemed.
-Ecstatic elegance gay but disposed.
-We me rent been part what.
-An concluded sportsman offending so provision mr education.
-Bed uncommonly his discovered for estimating far.
-Equally he minutes my hastily. Up hung mr we give rest half.
-Painful so he an comfort is manners. 
-Effect if in up no depend seemed.
-Ecstatic elegance gay but disposed.
-We me rent been part what.
-An concluded sportsman offending so provision mr education.
-Bed uncommonly his discovered for estimating far.
-Equally he minutes my hastily. Up hung mr we give rest half.
-Painful so he an comfort is manners. 
-
-</p>
-</div>
-
-<script>
-
-</script>
-</body>
+                        <h4 class="text-uppercase mb-4">Elérhetőség</h4>
+                        <p class="lead mb-0">
+                            adamsors97@gmail.com <br>
+                            <a href="#contact">Üzenet küldés</a>
+                            .
+                        </p>
+						
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Sors Ádám © Portfólió 2020-2021</small></div>
+        </div>
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+        <div class="scroll-to-top d-lg-none position-fixed">
+            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                    <div class="modal-body text-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Programtervezői informatikus BSC</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <!--
+                                    <!-- Portfolio Modal - Text-->
+																		<h1> 2016 - 2020</h1>
+                                    <p class="mb-5 bigfont">A Szegedi Tudományegyetem TTIK kar programtervezői informatikus szakára 2016-ban nyertem felvételt és sikeresen diplomát szereztem 2020 nyarán. <br><br> Szakdolgozatom címe: <br> Megerősítéses tanulás genetikus algoritmusokkal </p>
+                                    <img class="img-fluid rounded mb-5 small" src="assets/img/portfolio/sztelogo.png" alt="" />
+									<br>
+									<button class="btn btn-primary" data-dismiss="modal">
+                                        <i class="fas fa-times fa-fw"></i>
+                                        Close Window
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                    <div class="modal-body text-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal2Label">Programtervezői informatikus MSC</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+									<h1> 2020 - </h1>
+                                    <p class="mb-5 bigfont">A programtervezői alapképzés befejeztével sikerült felvételt nyernem ugyanezen szak mesterképzésére, ahol tanulmányaimat jelenleg is folytatom. <br> A képzést várhatóan 2022-ben fejezem be. </p>
+                                    <img class="img-fluid rounded mb-5 small" src="assets/img/portfolio/sztelogo.png" alt="" />
+									<br>
+									<button class="btn btn-primary" data-dismiss="modal">
+                                        <i class="fas fa-times fa-fw"></i>
+                                        Close Window
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="assets/mail/jqBootstrapValidation.js"></script>
+        <script src="assets/mail/contact_me.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
